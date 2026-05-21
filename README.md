@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+                                     # JobTracker AI — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React.js frontend for JobTracker AI — a full-stack job application tracking platform with AI-powered job description analysis and career assistance.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+- React.js 18
+- React Router DOM — client-side navigation
+- Axios — API calls with JWT interceptor
+- Recharts — data visualization
+- React Hot Toast — notifications
+- Lucide React — icons
+- Deployed on Vercel
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- JWT authentication — login, register, auto-redirect
+- Protected routes — unauthenticated users redirected to login
+- Dashboard — application stats cards + kanban-style status filters
+- Application management — add, edit, delete, update status
+- AI JD Analyzer — paste any job description, get match score + skill gaps
+- AI Career Chatbot — ask anything about interview prep or job search
+- Profile page — manage your skill profile used for AI matching
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Pages
 
-### `npm test`
+| Route | Description |
+|-------|-------------|
+| /login | Login page |
+| /register | Registration with skills input |
+| /dashboard | Main dashboard with applications |
+| /analyze | AI JD Analyzer + Career Chatbot |
+| /profile | Skill and profile management |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Local Setup
 
-### `npm run build`
+### Prerequisites
+- Node.js 18+
+- Backend running at `http://localhost:8080`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Steps
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+```bash
+git clone https://github.com/bhadra06/jobtracker-frontend.git
+cd jobtracker-frontend
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
+```bash
+npm install
+```
 
-### `npm run eject`
+3. Start the development server:
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+App runs at `http://localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Make sure the backend is running at port 8080 before starting the frontend.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+├── api/
+│   └── axios.js          # Axios instance with JWT interceptor
+├── context/
+│   └── AuthContext.js    # Global auth state management
+├── components/
+│   ├── Navbar.jsx         # Top navigation bar
+│   ├── StatsCards.jsx     # Dashboard stat cards
+│   ├── ApplicationCard.jsx # Job application card
+│   └── AddApplicationModal.jsx # Add/edit modal
+├── pages/
+│   ├── LoginPage.jsx
+│   ├── RegisterPage.jsx
+│   ├── DashboardPage.jsx
+│   ├── AnalyzePage.jsx
+│   └── ProfilePage.jsx
+└── utils/
+    └── constants.js       # Status colors and labels
+```
 
-## Learn More
+## How the AI Analyzer Works
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. User updates their skill profile on the Profile page
+2. User pastes a job description on the Analyze page
+3. Frontend sends the JD to the Spring Boot backend
+4. Backend fetches user skills from PostgreSQL
+5. Backend sends JD + skills to Groq (Llama 3.3 AI)
+6. AI returns: match score, matched skills, missing skills, suggestions
+7. Frontend renders the results as a visual score card
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Important — Groq API Key (Backend)
 
-### Code Splitting
+The AI features depend on a Groq API key configured in the backend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> ⚠️ The current Groq API key expires on **May 28, 2026**. After this date, a new key must be generated at [console.groq.com](https://console.groq.com) and updated in the backend environment variables. The frontend itself requires no API key changes.
 
-### Analyzing the Bundle Size
+## Backend Repository
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[github.com/bhadra06/jobtracker-api](https://github.com/bhadra06/jobtracker-api)
 
-### Making a Progressive Web App
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Dashboard
+Shows all job applications with status filters and stats cards.
 
-### Advanced Configuration
+### AI Analyzer
+Paste any job description and get an instant AI-powered match score.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Profile
+Manage your skills to improve AI match accuracy.
 
-### Deployment
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Chowtipalli Veera Bhadram**  
+B.Tech Computer Science (Data Science) — KL University, May 2026  
+AWS Cloud Practitioner | Red Hat Certified Enterprise App Developer
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- GitHub: [github.com/bhadra06](https://github.com/bhadra06)
+- LinkedIn: [linkedin.com/in/chowtipalli-veera-bhadram](https://linkedin.com/in/chowtipalli-veera-bhadram)
+- Email: bhadrachowtipalli3@gmail.com
