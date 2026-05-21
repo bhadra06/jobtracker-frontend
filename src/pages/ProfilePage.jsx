@@ -6,7 +6,7 @@ import api from '../api/axios';
 import toast from 'react-hot-toast';
 
 export default function ProfilePage() {
-    const { user, login } = useAuth();
+    const {  login } = useAuth();
     const navigate = useNavigate();
 
     const [profile, setProfile] = useState(null);
