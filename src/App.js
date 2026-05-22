@@ -40,10 +40,10 @@ function AppRoutes() {
 export default function App() {
   return (
       <AuthProvider>
-        <BrowserRouter>
+
           <Toaster position="top-right" />
           <AppRoutes />
-        </BrowserRouter>
+
       </AuthProvider>
   );
 }

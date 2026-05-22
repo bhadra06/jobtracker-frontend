@@ -39,7 +39,7 @@ export default function RegisterPage() {
 
                 <form onSubmit={handleSubmit}>
                     {[
-                        { key: 'name', label: 'Full Name', type: 'text', placeholder: 'Bhadra' },
+                        { key: 'name', label: 'Full Name', type: 'text', placeholder: 'Name' },
                         { key: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com' },
                         { key: 'password', label: 'Password', type: 'password', placeholder: '••••••••' },
                     ].map(({ key, label, type, placeholder }) => (
