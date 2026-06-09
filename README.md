@@ -103,7 +103,7 @@ The AI features depend on a Groq API key configured in the backend.
 
 [github.com/bhadra06/jobtracker-api](https://github.com/bhadra06/jobtracker-api)
 
-## Screenshots
+##  Screenshots
 
 ### Dashboard
 Shows all job applications with status filters and stats cards.
